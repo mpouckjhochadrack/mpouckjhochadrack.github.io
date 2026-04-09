@@ -9,14 +9,14 @@
   <!-- SEO -->
   <meta name="description" content="Explorez les usages du web, les plateformes numériques et les transformations du monde connecté. Outils digitaux, présence en ligne et évolutions internet décryptés par CSRCD.">
   <meta name="keywords" content="CSRCD, web internet, outils digitaux, plateformes numériques, présence en ligne, SEO, réseaux sociaux, applications web, transformation numérique, Congo">
-  <link rel="canonical" href="https://mpouckjhochadrack.github.io/web-internet.html" />
+  <link rel="canonical" href="https://csrcd.github.io/web-internet.html" />
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://mpouckjhochadrack.github.io/web-internet.html" />
+  <meta property="og:url"         content="https://csrcd.github.io/web-internet.html" />
   <meta property="og:title"       content="Web & Internet — Outils Digitaux, Plateformes & Monde Connecté | CSRCD" />
   <meta property="og:description" content="Usages du web, plateformes numériques et transformations du monde connecté décryptés par CSRCD." />
-  <meta property="og:image"       content="https://mpouckjhochadrack.github.io/og-web-internet.png" />
+  <meta property="og:image"       content="https://csrcd.github.io/og-web-internet.png" />
   <meta property="og:locale"      content="fr_FR" />
   <meta property="og:site_name"   content="CSRCD" />
 
@@ -24,7 +24,7 @@
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Web & Internet — Outils Digitaux, Plateformes & Monde Connecté | CSRCD" />
   <meta name="twitter:description" content="Outils digitaux, présence en ligne et évolutions du monde connecté — analyses par CSRCD." />
-  <meta name="twitter:image"       content="https://mpouckjhochadrack.github.io/og-web-internet.png" />
+  <meta name="twitter:image"       content="https://csrcd.github.io/og-web-internet.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,16 +39,16 @@
     "@type": "Blog",
     "name": "CSRCD — Web & Internet",
     "description": "Usages du web, plateformes numériques et transformations du monde connecté.",
-    "url": "https://mpouckjhochadrack.github.io/web-internet.html",
+    "url": "https://csrcd.github.io/web-internet.html",
     "publisher": {
       "@type": "Organization",
       "name": "CSRCD",
-      "url": "https://mpouckjhochadrack.github.io/",
-      "logo": { "@type": "ImageObject", "url": "https://mpouckjhochadrack.github.io/favicon.png" }
+      "url": "https://csrcd.github.io/",
+      "logo": { "@type": "ImageObject", "url": "https://csrcd.github.io/favicon.png" }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://mpouckjhochadrack.github.io/web-internet.html"
+      "@id": "https://csrcd.github.io/web-internet.html"
     }
   }
   </script>
@@ -449,26 +449,128 @@
     }
 
     /* ══════════════════════════════════════════
-       FILTRES
+       FILTER BAR (style projet.html)
     ══════════════════════════════════════════ */
-    .blog-filters {
-      display: flex; align-items: center; justify-content: center;
-      flex-wrap: wrap; gap: 8px;
-      padding: 0 24px 56px;
+    .filter-section {
+      padding: 0 0 48px;
+      position: sticky; top: 86px; z-index: 100;
     }
-    .filter-btn {
-      padding: 7px 18px; border-radius: 999px;
-      font-family: var(--font); font-size: .8rem; font-weight: 500;
+    .filter-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      animation: fadeUp .7s cubic-bezier(.22,1,.36,1) .2s both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .filter-bar {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg-nav); border-radius: 16px;
       border: 1px solid var(--border-nav);
+      box-shadow: var(--shadow-nav);
+      padding: 8px; overflow-x: auto;
+      scrollbar-width: none;
+      transition: background .35s ease, border-color .35s ease;
+    }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .filter-left {
+      display: flex; align-items: center; gap: 6px; flex: 1; flex-wrap: nowrap;
+    }
+    .filter-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 15px; border-radius: 10px;
+      font-size: .81rem; font-weight: 500;
+      color: var(--text-muted); background: transparent;
+      border: none; cursor: pointer; font-family: var(--font);
+      white-space: nowrap; flex-shrink: 0;
+      transition: color var(--ease), background var(--ease);
+    }
+    .filter-pill:hover { color: var(--text-dark); background: var(--bg-hover); }
+    .filter-pill.active {
+      background: var(--btn-primary); color: var(--btn-p-text);
+      font-weight: 600;
+    }
+    .filter-pill .pill-count {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: .67rem; font-weight: 700;
+      background: rgba(0,0,0,.08); color: var(--text-muted);
+      padding: 1px 7px; border-radius: 999px;
+      min-width: 22px;
+      transition: background var(--ease), color var(--ease);
+    }
+    [data-theme="dark"] .filter-pill .pill-count {
+      background: rgba(255,255,255,.12); color: var(--text-muted);
+    }
+    .filter-pill.active .pill-count {
+      background: rgba(255,255,255,.2); color: var(--btn-p-text);
+    }
+    /* ══════════════════════════════════════════
+       PAGINATION
+    ══════════════════════════════════════════ */
+    .blog-pagination {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 6px; padding: 44px 0 24px;
+    }
+    .pag-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 42px; height: 42px; padding: 0 12px;
+      border-radius: 12px; border: 1.5px solid var(--border-nav);
       background: var(--bg-nav); color: var(--text-muted);
-      cursor: pointer;
+      font-family: var(--font); font-size: .86rem; font-weight: 500;
+      cursor: pointer; user-select: none;
       transition: all var(--ease);
     }
-    .filter-btn:hover { border-color: var(--text-muted); color: var(--text-dark); }
-    .filter-btn.active {
-      background: var(--btn-primary); color: var(--btn-p-text);
-      border-color: var(--btn-primary);
+    .pag-btn:hover:not([disabled]) {
+      border-color: var(--text-muted); color: var(--text-dark); transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
     }
+    .pag-btn.active {
+      background: var(--btn-primary); color: var(--btn-p-text);
+      border-color: var(--btn-primary); font-weight: 700;
+      box-shadow: 0 4px 16px var(--btn-hover-sh);
+    }
+    .pag-btn[disabled] { opacity: .35; cursor: not-allowed; }
+    .pag-sep {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 42px; color: var(--text-sub); user-select: none;
+    }
+    .pag-info {
+      width: 100%; text-align: center;
+      font-size: .72rem; color: var(--text-sub); letter-spacing: .05em;
+      margin-top: 10px; text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════════
+       NEWSLETTER
+    ══════════════════════════════════════════ */
+    .newsletter-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 32px 72px;
+    }
+    .newsletter-card {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: center;
+      background: var(--bg-card); border-radius: 24px;
+      border: 1px solid var(--border-nav);
+      box-shadow: var(--shadow-card);
+      padding: 52px 52px;
+      transition: background .35s ease, border-color .35s ease;
+    }
+    .nl-eyebrow {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .nl-title {
+      font-size: 1.55rem; font-weight: 800; letter-spacing: -.035em;
+      line-height: 1.2; color: var(--text-dark); margin-bottom: 12px;
+      transition: color .35s ease;
+    }
+    .nl-desc { font-size: .88rem; color: var(--text-muted); line-height: 1.7; transition: color .35s ease; }
+    .nl-form-wrap { display: flex; flex-direction: column; gap: 8px; }
+    .nl-note { font-size: .74rem; color: var(--text-sub); margin-top: 4px; transition: color .35s ease; }
+    .ml-embedded { width: 100%; }
 
     /* ══════════════════════════════════════════
        ARTICLE VEDETTE
@@ -603,36 +705,6 @@
     .blog-card-link svg { transition: transform var(--ease); }
     .blog-card-link:hover svg { transform: translateX(3px); }
 
-    /* ══════════════════════════════════════════
-       PAGINATION
-    ══════════════════════════════════════════ */
-    .blog-pagination {
-      display: flex; align-items: center; justify-content: center;
-      flex-wrap: wrap; gap: 6px; padding: 44px 0 24px;
-    }
-    .pag-btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-width: 42px; height: 42px; padding: 0 12px;
-      border-radius: 12px; border: 1.5px solid var(--border-nav);
-      background: var(--bg-nav); color: var(--text-muted);
-      font-family: var(--font); font-size: .86rem; font-weight: 500;
-      cursor: pointer; user-select: none;
-      transition: all var(--ease);
-    }
-    .pag-btn:hover:not([disabled]) {
-      border-color: var(--text-muted); color: var(--text-dark); transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0,0,0,.08);
-    }
-    .pag-btn.active {
-      background: var(--btn-primary); color: var(--btn-p-text);
-      border-color: var(--btn-primary); font-weight: 700;
-      box-shadow: 0 4px 16px var(--btn-hover-sh);
-    }
-    .pag-btn[disabled] { opacity: .35; cursor: not-allowed; }
-    .pag-sep {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 32px; height: 42px; color: var(--text-sub); user-select: none;
-    }
     .pag-info {
       width: 100%; text-align: center;
       font-size: .72rem; color: var(--text-sub); letter-spacing: .05em;
@@ -731,12 +803,15 @@
       .featured-img-wrap { min-height: 260px; }
       .featured-body { padding: 32px 32px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .newsletter-card { grid-template-columns: 1fr; padding: 40px 32px; }
     }
     @media (max-width: 580px) {
       .blog-grid { grid-template-columns: 1fr; }
       .blog-hero { padding: 110px 0 40px; }
       .blog-featured,
       .blog-grid-section { padding-left: 20px; padding-right: 20px; }
+      .newsletter-inner { padding: 0 20px; }
+      .newsletter-card { padding: 32px 22px; border-radius: 20px; }
       .footer-card { padding: 36px 24px 0; border-radius: 20px 20px 0 0; }
       .footer-grid { grid-template-columns: 1fr; gap: 28px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 14px; }
@@ -749,10 +824,10 @@
   ══════════════════════════════════════════ -->
   <nav class="nav-wrapper" id="mainNav" role="navigation" aria-label="Navigation principale">
     <div class="navbar">
-      <a href="index.html" class="nav-logo">CSRCD</a>
+      <a href="https://csrcd.github.io" class="nav-logo">CSRCD</a>
       <ul class="nav-links" role="list">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="https://csrcd.github.io">Accueil</a></li>
+        <li><a href="../pages/services.html">Services</a></li>
         <li class="nav-has-dropdown" id="deskPages">
           <button class="nav-drop-btn" id="pagesTrigger" aria-haspopup="true" aria-expanded="false">
             Pages
@@ -761,17 +836,19 @@
             </svg>
           </button>
           <div class="nav-drop-panel" id="pagesPanel" role="menu">
-            <a href="about.html"        role="menuitem"><span class="page-icon">👤</span> A propos</a>
-            <a href="projet.html"       role="menuitem"><span class="page-icon">🖼️</span> Projets</a>
+            <a href="../pages/about.html" role="menuitem"><span class="page-icon">👤</span> A propos</a>
+            <a href="../pages/projet.html" role="menuitem"><span class="page-icon">🖼️</span> Projets</a>
             <div class="sep"></div>
-            <a href="blog.html"         role="menuitem"><span class="page-icon">✍️</span> Blog</a>
-            <a href="actualites.html"   role="menuitem"><span class="page-icon">📰</span> Actualités</a>
-            <a href="economie.html"     role="menuitem"><span class="page-icon">💹</span> Économie & Finance</a>
-            <a href="web-internet.html" role="menuitem" aria-current="page"><span class="page-icon">🌐</span> Web & Internet</a>
+            <a href="../pages/blog.html" role="menuitem"><span class="page-icon">✍️</span> Blog</a>
+            <a href="../actualites/actualites.html" role="menuitem"><span class="page-icon">📰</span> Actualités</a>
+            <a href="../finance/economie.html" role="menuitem"><span class="page-icon">💹</span> Économie &amp; Finance</a>
+            <a href="../innovation/innovation.html" role="menuitem"><span class="page-icon">🚀</span> Innovation &amp; Tech</a>
+            <a href="../reflexion/analyse-reflexion.html" role="menuitem"><span class="page-icon">🔍</span> Analyse &amp; Réflexion</a>
+            <a href="../web/web-internet.html" role="menuitem" aria-current="page"><span class="page-icon">🌐</span> Web &amp; Internet</a>
           </div>
         </li>
-        <li><a href="Webtemplates.html">Templates</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="../index.html#services">Catégories</a></li>
+        <li><a href="../pages/contact.html">Contact</a></li>
       </ul>
       <div class="nav-right">
         <button class="search-btn" id="searchBtn" aria-label="Rechercher" aria-expanded="false">
@@ -793,7 +870,7 @@
             </svg>
           </span>
         </button>
-        <a href="projet.html" class="nav-cta">Nos projets</a>
+        <a href="../pages/projet.html" class="nav-cta">Nos projets</a>
         <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
           <span></span><span></span><span></span>
         </button>
@@ -801,8 +878,8 @@
     </div>
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true" role="menu">
       <ul>
-        <li><a href="index.html"    role="menuitem">Accueil</a></li>
-        <li><a href="services.html" role="menuitem">Services</a></li>
+        <li><a href="https://csrcd.github.io/"    role="menuitem">Accueil</a></li>
+        <li><a href="../pages/services.html" role="menuitem">Services</a></li>
         <li class="mobile-has-sub" id="mobPages">
           <button class="mob-sub-trigger" id="mobPagesTrigger" aria-expanded="false">
             Pages
@@ -812,19 +889,21 @@
           </button>
           <div class="mob-sublist">
             <div class="mob-sublist-inner">
-              <a href="about.html"        class="mob-sublink" role="menuitem"><span class="page-icon">👤</span> A propos</a>
-              <a href="projet.html"       class="mob-sublink" role="menuitem"><span class="page-icon">🖼️</span> Projets</a>
-              <a href="blog.html"         class="mob-sublink" role="menuitem"><span class="page-icon">✍️</span> Blog</a>
-              <a href="actualites.html"   class="mob-sublink" role="menuitem"><span class="page-icon">📰</span> Actualités</a>
-              <a href="economie.html"     class="mob-sublink" role="menuitem"><span class="page-icon">💹</span> Économie & Finance</a>
-              <a href="web-internet.html" class="mob-sublink" role="menuitem" aria-current="page"><span class="page-icon">🌐</span> Web & Internet</a>
+              <a href="../pages/about.html" class="mob-sublink" role="menuitem"><span class="page-icon">👤</span> A propos</a>
+              <a href="../pages/projet.html" class="mob-sublink" role="menuitem"><span class="page-icon">🖼️</span> Projets</a>
+              <a href="../pages/blog.html" class="mob-sublink" role="menuitem"><span class="page-icon">✍️</span> Blog</a>
+              <a href="../actualites/actualites.html" class="mob-sublink" role="menuitem"><span class="page-icon">📰</span> Actualités</a>
+              <a href="../finance/economie.html" class="mob-sublink" role="menuitem"><span class="page-icon">💹</span> Économie &amp; Finance</a>
+              <a href="../innovation/innovation.html" class="mob-sublink" role="menuitem"><span class="page-icon">🚀</span> Innovation &amp; Tech</a>
+              <a href="../reflexion/analyse-reflexion.html" class="mob-sublink" role="menuitem"><span class="page-icon">🔍</span> Analyse &amp; Réflexion</a>
+              <a href="../web/web-internet.html" class="mob-sublink" role="menuitem" aria-current="page"><span class="page-icon">🌐</span> Web &amp; Internet</a>
             </div>
           </div>
         </li>
-        <li><a href="Webtemplates.html" role="menuitem">Templates</a></li>
-        <li><a href="contact.html"      role="menuitem">Contact</a></li>
+        <li><a href="../index.html#services" role="menuitem">Catégories</a></li>
+        <li><a href="../pages/contact.html"      role="menuitem">Contact</a></li>
       </ul>
-      <a href="projet.html" class="mob-cta" role="menuitem">Nos projets</a>
+      <a href="../pages/projet.html" class="mob-cta" role="menuitem">Nos projets</a>
     </div>
   </nav>
 
@@ -857,16 +936,38 @@
   </section>
 
   <!-- FILTRES -->
-  <div class="blog-filters" id="blogFilters" role="group" aria-label="Filtrer les articles par thème web">
-    <button class="filter-btn active" data-filter="all"         aria-pressed="true">Tous</button>
-    <button class="filter-btn" data-filter="outils"             aria-pressed="false">Outils Digitaux</button>
-    <button class="filter-btn" data-filter="plateformes"        aria-pressed="false">Plateformes</button>
-    <button class="filter-btn" data-filter="seo"                aria-pressed="false">SEO & Visibilité</button>
-    <button class="filter-btn" data-filter="reseaux"            aria-pressed="false">Réseaux Sociaux</button>
-    <button class="filter-btn" data-filter="ia"                 aria-pressed="false">IA & Automatisation</button>
-    <button class="filter-btn" data-filter="securite"           aria-pressed="false">Sécurité</button>
-    <button class="filter-btn" data-filter="tendances"          aria-pressed="false">Tendances</button>
-  </div>
+  <section class="filter-section">
+    <div class="filter-inner">
+      <div class="filter-bar" id="blogFilters" role="group" aria-label="Filtrer les articles par thème web">
+        <div class="filter-left">
+          <button class="filter-pill active" data-filter="all" aria-pressed="true">
+            Tous <span class="pill-count" id="countAll">0</span>
+          </button>
+          <button class="filter-pill" data-filter="outils" aria-pressed="false">
+            Outils Digitaux <span class="pill-count" id="countOutils">0</span>
+          </button>
+          <button class="filter-pill" data-filter="plateformes" aria-pressed="false">
+            Plateformes <span class="pill-count" id="countPlateformes">0</span>
+          </button>
+          <button class="filter-pill" data-filter="seo" aria-pressed="false">
+            SEO &amp; Visibilité <span class="pill-count" id="countSeo">0</span>
+          </button>
+          <button class="filter-pill" data-filter="reseaux" aria-pressed="false">
+            Réseaux Sociaux <span class="pill-count" id="countReseaux">0</span>
+          </button>
+          <button class="filter-pill" data-filter="ia" aria-pressed="false">
+            IA &amp; Automatisation <span class="pill-count" id="countIa">0</span>
+          </button>
+          <button class="filter-pill" data-filter="securite" aria-pressed="false">
+            Sécurité <span class="pill-count" id="countSecurite">0</span>
+          </button>
+          <button class="filter-pill" data-filter="tendances" aria-pressed="false">
+            Tendances <span class="pill-count" id="countTendances">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ══════════════════════════════════════════
        ARTICLE VEDETTE
@@ -1155,6 +1256,34 @@
 
   </section>
 
+  <!-- MailerLite Universal -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2248624');
+  </script>
+  <!-- End MailerLite Universal -->
+
+  <!-- ══════════════════════════════════════════
+       NEWSLETTER
+  ══════════════════════════════════════════ -->
+  <div class="newsletter-inner" id="newsletter">
+    <div class="newsletter-card">
+      <div>
+        <p class="nl-eyebrow">🌐 Newsletter Web &amp; Internet</p>
+        <h2 class="nl-title">Restez connecté au monde numérique</h2>
+        <p class="nl-desc">Chaque semaine, recevez nos meilleurs articles sur le web, les outils digitaux, le SEO et les tendances numériques — décryptés depuis Brazzaville, directement dans votre boîte mail.</p>
+      </div>
+      <div class="nl-form-wrap">
+        <!-- MailerLite Form -->
+        <div class="ml-embedded" data-form="ldC2t2"></div>
+        <p class="nl-note">Pas de spam. Désinscription en un clic. Données confidentielles. <strong>N'oubliez pas de confirmer votre inscription en cliquant sur le  lien qui vous sera envoyé dans quelques minutes.</strong></p>
+      </div>
+    </div>
+  </div>
+<br />
 
   <!-- ══════════════════════════════════════════
        FOOTER
@@ -1163,8 +1292,8 @@
     <div class="footer-card">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="footer-logo" aria-label="Accueil CSRCD">
-            <img src="../images/image2.png" alt="CSRCD logo" class="footer-logo-img" width="40" height="40"/>
+          <a href="../https://csrcd.github.io" class="footer-logo" aria-label="Accueil CSRCD">
+            <img src="images/image2.png" alt="CSRCD logo" class="footer-logo-img" width="40" height="40"/>
             <span class="footer-logo-name">CSRCD</span>
           </a>
           <p class="footer-desc">Centre spécial de recherche et de création digitale.</p>
@@ -1186,22 +1315,21 @@
         <div class="footer-col">
           <h3>Liens Rapides</h3>
           <ul>
-            <li><a href="about.html">A propos</a></li>
-            <li><a href="services.html">Nos Services</a></li>
-            <li><a href="projet.html">Nos projets</a></li>
-            <li><a href="index.html#testimonials">Témoignages</a></li>
-            <li><a href="about.html#team-ssection">Notre équipe</a></li>
+            <li><a href="../pages/about.html">A propos</a></li>
+            <li><a href="../pages/services.html">Nos Services</a></li>
+            <li><a href="../pages/projet.html">Nos projets</a></li>
+            <li><a href="../pages/about.html">Notre équipe</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Nos Services</h4>
           <ul>
-            <li><a href="Webtemplates.html">Website templates</a></li>
-            <li><a href="GraphicDesign.html">Design graphique</a></li>
-            <li><a href="aicours.html">Cours IA</a></li>
-            <li><a href="seoservice.html">SEO et stratégie de contenu</a></li>
-            <li><a href="social-media-packs.html">Packs réseaux sociaux</a></li>
-            <li><a href="businessAutomation.html">Automatisation IA</a></li>
+            <li><a href="#">Website templates</a></li>
+            <li><a href="#">Design graphique</a></li>
+            <li><a href="#">Cours IA</a></li>
+            <li><a href="#">SEO et stratégie de contenu</a></li>
+            <li><a href="#">Packs réseaux sociaux</a></li>
+            <li><a href="#">Automatisation IA</a></li>
           </ul>
         </div>
         <div class="footer-col footer-contact">
@@ -1217,7 +1345,7 @@
               <div class="contact-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
-              <div class="contact-text"><a href="mailto:contact@csrcd.com">contact@csrcd.com</a></div>
+              <div class="contact-text"><a href="../pages/contact.html"> <span><span class="__cf_email__" data-cfemail="d7baa7b8a2b4bcb6b1b1b6bea5b2a497b0bab6bebbf9b4b8ba">[email&#160;protected]</span></span></a></div>
             </div>
           </div>
         </div>
@@ -1225,16 +1353,16 @@
       <div class="footer-bottom">
         <p class="footer-copy">© 2026 MPOUCK. Tous droits réservés.</p>
         <nav class="footer-legal" aria-label="Liens légaux">
-          <a href="/terms">Conditions d'utilisation</a>
-          <a href="/privacy">Politique de confidentialité</a>
-          <a href="/cookies">Cookie Policy</a>
-          <a href="/sitemap">Sitemap</a>
+          <a href="#">Conditions d'utilisation</a>
+          <a href="#">Politique de confidentialité</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Sitemap</a>
         </nav>
       </div>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   document.addEventListener('DOMContentLoaded', function() {
     /* ── Thème ── */
     var html = document.documentElement;
@@ -1301,70 +1429,82 @@
       mobPagesTrig.setAttribute('aria-expanded', String(o));
     });
 
-    /* ── Filtres + Pagination ── */
-    var ARTICLES_PER_PAGE = 15;
+    /* ── Filtres + Pagination (identique au modèle actualites) ── */
+    var ARTICLES_PER_PAGE = 9;
     var currentPage  = 1;
     var activeFilter = 'all';
     var allCards     = Array.from(document.querySelectorAll('#blogGrid .blog-card'));
     var pagEl        = document.getElementById('blogPagination');
+    var pills        = Array.from(document.querySelectorAll('.filter-pill'));
 
-    function getVisible() {
+    // Comptage des catégories
+    var counts = { all: 0, outils: 0, plateformes: 0, seo: 0, reseaux: 0, ia: 0, securite: 0, tendances: 0 };
+    allCards.forEach(function(c) {
+      var cat = c.getAttribute('data-category');
+      counts.all++;
+      if (counts[cat] !== undefined) counts[cat]++;
+    });
+    document.getElementById('countAll').textContent         = counts.all;
+    document.getElementById('countOutils').textContent      = counts.outils;
+    document.getElementById('countPlateformes').textContent = counts.plateformes;
+    document.getElementById('countSeo').textContent         = counts.seo;
+    document.getElementById('countReseaux').textContent     = counts.reseaux;
+    document.getElementById('countIa').textContent          = counts.ia;
+    document.getElementById('countSecurite').textContent    = counts.securite;
+    document.getElementById('countTendances').textContent   = counts.tendances;
+
+    function getFiltered() {
       return allCards.filter(function(c) {
-        return activeFilter === 'all' || c.dataset.category === activeFilter;
+        return activeFilter === 'all' || c.getAttribute('data-category') === activeFilter;
       });
     }
 
     function renderPage(page) {
       currentPage = page;
-      var visible = getVisible();
-      var total   = visible.length;
-      var pages   = Math.ceil(total / ARTICLES_PER_PAGE);
-      var start   = (page - 1) * ARTICLES_PER_PAGE;
-      var end     = start + ARTICLES_PER_PAGE;
+      var filtered = getFiltered();
+      var total    = filtered.length;
+      var pages    = Math.ceil(total / ARTICLES_PER_PAGE);
+      var start    = (page - 1) * ARTICLES_PER_PAGE;
+      var end      = start + ARTICLES_PER_PAGE;
 
       allCards.forEach(function(c) { c.style.display = 'none'; });
-      visible.slice(start, end).forEach(function(c) { c.style.display = ''; });
+      filtered.slice(start, end).forEach(function(c, i) {
+        c.style.display = '';
+        c.style.animation = 'none';
+        void c.offsetHeight;
+        c.style.animationDelay = (i * 0.06) + 's';
+        c.style.animation = '';
+      });
 
       pagEl.innerHTML = '';
       if (pages <= 1) return;
 
-      function makeBtn(html, label, disabled, active, onClick) {
-        var b = document.createElement('button');
-        b.className = 'pag-btn' + (active ? ' active' : '');
-        b.innerHTML = html;
-        b.setAttribute('aria-label', label);
-        if (disabled) b.setAttribute('disabled', true);
-        if (!disabled) b.addEventListener('click', onClick);
-        return b;
-      }
-
-      pagEl.appendChild(makeBtn(
-        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>',
-        'Page précédente', page === 1, false,
-        function() { renderPage(currentPage - 1); scrollGrid(); }
-      ));
+      var prevBtn = document.createElement('button');
+      prevBtn.className = 'pag-btn';
+      prevBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
+      prevBtn.setAttribute('aria-label', 'Page précédente');
+      if (page === 1) prevBtn.setAttribute('disabled', true);
+      else prevBtn.addEventListener('click', function() { renderPage(currentPage - 1); scrollGrid(); });
+      pagEl.appendChild(prevBtn);
 
       for (var p = 1; p <= pages; p++) {
-        if (pages > 6 && p > 2 && p < pages - 1 && Math.abs(p - page) > 1) {
-          if (p === 3 || p === pages - 2) {
-            var sep = document.createElement('span');
-            sep.className = 'pag-sep'; sep.textContent = '···';
-            pagEl.appendChild(sep);
-          }
-          continue;
-        }
         (function(num) {
-          pagEl.appendChild(makeBtn(num, 'Page ' + num, false, num === page,
-            function() { renderPage(num); scrollGrid(); }
-          ));
+          var btn = document.createElement('button');
+          btn.className = 'pag-btn' + (num === page ? ' active' : '');
+          btn.textContent = num;
+          btn.setAttribute('aria-label', 'Page ' + num);
+          if (num !== page) btn.addEventListener('click', function() { renderPage(num); scrollGrid(); });
+          pagEl.appendChild(btn);
         })(p);
       }
 
-      pagEl.appendChild(makeBtn(
-        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
-        'Page suivante', page === pages, false,
-        function() { renderPage(currentPage + 1); scrollGrid(); }
-      ));
+      var nextBtn = document.createElement('button');
+      nextBtn.className = 'pag-btn';
+      nextBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+      nextBtn.setAttribute('aria-label', 'Page suivante');
+      if (page === pages) nextBtn.setAttribute('disabled', true);
+      else nextBtn.addEventListener('click', function() { renderPage(currentPage + 1); scrollGrid(); });
+      pagEl.appendChild(nextBtn);
 
       var info = document.createElement('p');
       info.className = 'pag-info';
@@ -1377,17 +1517,15 @@
       if (s) window.scrollTo({ top: s.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth' });
     }
 
-    document.getElementById('blogFilters').addEventListener('click', function(e) {
-      var btn = e.target.closest('.filter-btn');
-      if (!btn) return;
-      document.querySelectorAll('.filter-btn').forEach(function(b) {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
+    pills.forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        pills.forEach(function(p) { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
+        pill.classList.add('active');
+        pill.setAttribute('aria-pressed', 'true');
+        activeFilter = pill.getAttribute('data-filter');
+        currentPage  = 1;
+        renderPage(1);
       });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      activeFilter = btn.dataset.filter;
-      renderPage(1);
     });
 
     renderPage(1);
@@ -1401,16 +1539,16 @@
 
     /* ── Search ── */
     var CONTENT = [
-  { type:'Page', icon:'🏠', title:'Accueil', desc:'Page accueil CSRCD.', href:'https://mpouckjhochadrack.github.io/' },
-  { type:'Page', icon:'⚡', title:'Services', desc:'Nos services : templates web, design graphique, formations IA.', href:'https://mpouckjhochadrack.github.io/services.html' },
-  { type:'Page', icon:'ℹ️', title:'A propos', desc:'Présentation du CSRCD, sa vision et son expertise.', href:'https://mpouckjhochadrack.github.io/about.html' },
-  { type:'Page', icon:'📁', title:'Projets', desc:'Découvrez les projets et réalisations numériques MPOUCK.', href:'https://mpouckjhochadrack.github.io/projet.html' },
-  { type:'Page', icon:'📰', title:'Blog', desc:'Articles sur le design, IA, entrepreneuriat et numérique.', href:'https://mpouckjhochadrack.github.io/blog.html' },
-  { type:'Page', icon:'📰', title:'Actualités', desc:'Actualités quotidiennes : Congo, Afrique et monde.', href:'https://mpouckjhochadrack.github.io/actualites.html' },
-  { type:'Page', icon:'💹', title:'Économie & Finance', desc:'Marchés, investissement, entrepreneuriat et finance en Afrique.', href:'https://mpouckjhochadrack.github.io/economie.html' },
-  { type:'Page', icon:'🌐', title:'Web & Internet', desc:'Outils digitaux, plateformes numériques et monde connecté.', href:'https://mpouckjhochadrack.github.io/web-internet.html' },
-  { type:'Page', icon:'📧', title:'Newsletter', desc:'Abonnez-vous pour recevoir ressources et conseils.', href:'https://mpouckjhochadrack.github.io/#newsletter' },
-  { type:'Page', icon:'✉️', title:'Contact', desc:'Contactez-nous pour toute demande de collaboration.', href:'https://mpouckjhochadrack.github.io/contact.html' },
+  { type:'Page', icon:'🏠', title:'Accueil', desc:'Page accueil CSRCD.', href:'https://csrcd.github.io/' },
+  { type:'Page', icon:'⚡', title:'Services', desc:'Nos services : templates web, design graphique, formations IA.', href:'https://csrcd.github.io/services.html' },
+  { type:'Page', icon:'ℹ️', title:'A propos', desc:'Présentation du CSRCD, sa vision et son expertise.', href:'https://csrcd.github.io/about.html' },
+  { type:'Page', icon:'📁', title:'Projets', desc:'Découvrez les projets et réalisations numériques MPOUCK.', href:'https://csrcd.github.io/projet.html' },
+  { type:'Page', icon:'📰', title:'Blog', desc:'Articles sur le design, IA, entrepreneuriat et numérique.', href:'https://csrcd.github.io/blog.html' },
+  { type:'Page', icon:'📰', title:'Actualités', desc:'Actualités quotidiennes : Congo, Afrique et monde.', href:'https://csrcd.github.io/actualites.html' },
+  { type:'Page', icon:'💹', title:'Économie & Finance', desc:'Marchés, investissement, entrepreneuriat et finance en Afrique.', href:'https://csrcd.github.io/economie.html' },
+  { type:'Page', icon:'🌐', title:'Web & Internet', desc:'Outils digitaux, plateformes numériques et monde connecté.', href:'https://csrcd.github.io/web-internet.html' },
+  { type:'Page', icon:'📧', title:'Newsletter', desc:'Abonnez-vous pour recevoir ressources et conseils.', href:'https://csrcd.github.io/#newsletter' },
+  { type:'Page', icon:'✉️', title:'Contact', desc:'Contactez-nous pour toute demande de collaboration.', href:'https://csrcd.github.io/contact.html' },
   { type:'Article', icon:'🌍', title:'Internet en Afrique centrale en 2026 : l\'explosion du web mobile', desc:'Tendances — Web mobile et opportunités numériques régionales.', href:'web-internet-afrique-centrale-2026.html' },
   { type:'Article', icon:'🔍', title:'SEO en 2026 : comment apparaître en premier sur Google depuis l\'Afrique', desc:'SEO & Visibilité — Stratégies de référencement pour le marché africain.', href:'web-seo-afrique-2026.html' },
   { type:'Article', icon:'📱', title:'TikTok, Instagram, WhatsApp : quelles plateformes dominent l\'Afrique centrale', desc:'Plateformes — Analyse des réseaux sociaux en Afrique centrale.', href:'web-plateformes-afrique-centrale-2026.html' },
@@ -1519,14 +1657,11 @@
         if (!items.length) return;
         if (e.key === 'ArrowDown') { e.preventDefault(); focusedIdx = Math.min(focusedIdx+1, items.length-1); updateFocus(); }
         if (e.key === 'ArrowUp')   { e.preventDefault(); focusedIdx = Math.max(focusedIdx-1, 0); updateFocus(); }
-        if (e.key === 'Enter') {
-          var focused = document.querySelector('.search-item.focused');
-          if (focused) { focused.click(); }
-        }
+        if (e.key === 'Enter' && focusedIdx >= 0) { e.preventDefault(); items[focusedIdx].click(); }
       });
     }
 
-  }); // fin DOMContentLoaded
+  });
   </script>
 </body>
 </html>
